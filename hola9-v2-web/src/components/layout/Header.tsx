@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Search, 
   MapPin, 
@@ -56,7 +56,7 @@ const Header = () => {
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  const dropdownVariants: Variants = {
+  const dropdownVariants = {
     hidden: { opacity: 0, y: 10, scale: 0.95 },
     visible: { 
       opacity: 1, 
