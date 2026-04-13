@@ -122,7 +122,7 @@ const Homepage = () => {
   return (
     <div 
       className="homepage-wrapper"
-      style={{'--ui-scale': scale} as React.CSSProperties}
+      style={{'--ui-scale': scale} as any}
     >
       <div className="homepage-container">
         {/* Background */}
