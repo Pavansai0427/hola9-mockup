@@ -5,14 +5,16 @@ echo           ULTIMATE AUTOMATIC DEPLOYMENT FIX (FORCE)
 echo ============================================================
 echo.
 
-:: Step 1: Force remove internal .git
-echo [STEP 1/4] Cleaning hidden Git metadata...
+:: Step 1: Force remove internal .git and root lockfile
+echo [STEP 1/4] Cleaning redundant metadata...
 if exist "hola9-v2-web\.git" (
     attrib -h -s -r "hola9-v2-web\.git" /s /d >nul
     rd /s /q "hola9-v2-web\.git"
     echo [OK] Internal Git folder removed.
-) else (
-    echo [INFO] No internal Git folder found.
+)
+if exist "package-lock.json" (
+    del /f /q "package-lock.json"
+    echo [OK] Removed redundant root lockfile.
 )
 
 :: Step 2: Reset Git Cache
