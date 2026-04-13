@@ -1,7 +1,7 @@
 @echo off
 setlocal
 echo ============================================================
-echo           ULTIMATE AUTOMATIC DEPLOYMENT FIX
+echo           ULTIMATE AUTOMATIC DEPLOYMENT FIX (FORCE)
 echo ============================================================
 echo.
 
@@ -26,11 +26,14 @@ git add .
 git commit -m "🚀 AUTO-DEPLOY: Full source code upload" >nul 2>nul
 echo [OK] Code committed.
 
-:: Step 4: Push
-echo [STEP 4/4] Pushing to GitHub...
-git push origin main
+:: Step 4: Force Push
+echo [STEP 4/4] Pushing to GitHub (Force)...
+git push origin main --force
 if %ERRORLEVEL% NEQ 0 (
-    echo [ERROR] Push failed. Please check your internet connection.
+    echo.
+    echo [ERROR] Push failed again. 
+    echo Possible reason: Your GitHub password/token has expired or internet is down.
+    echo.
     pause
     exit /b
 )
